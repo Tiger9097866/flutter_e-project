@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'splash.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,20 +11,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
-        appBar: AppBar(
-          title: Text("Welcome"),
-        ),
-        body: Column(
-          children: [
-            Container(
-              width: 300,
-              height: 200,
-              color: Colors.red,
-              child: Center(child: Text("Container")),
-            )
-          ],
-        ),
+        body: Splash(),
       ),
     );
   }
