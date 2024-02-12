@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:e_project/Loginpage.dart';
+import 'package:e_project/SelectRole.dart';
 import 'package:flutter/material.dart';
 
 class Splash extends StatefulWidget {
