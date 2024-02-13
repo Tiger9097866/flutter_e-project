@@ -28,7 +28,7 @@ class _SplashState extends State<Splash> {
       children: [
         Center(
           child: Container(
-            margin: EdgeInsets.only(left: 99),
+            margin: EdgeInsets.only(left: 80),
             width: 200,
             height: 200,
             child: ClipRRect(
