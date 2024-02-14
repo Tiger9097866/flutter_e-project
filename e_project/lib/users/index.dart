@@ -1,15 +1,15 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 
 class Index extends StatelessWidget {
-  const Index({Key? key});
+  const Index({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: DefaultTabController(
-        length: 3,
+        length: 5, // Updated length to 5 for 5 tabs
         child: Scaffold(
           appBar: AppBar(
             title: Row(
@@ -34,7 +34,6 @@ class Index extends StatelessWidget {
               ],
             ),
           ),
-          // Drawer for the side menu
           drawer: Drawer(
             child: ListView(
               padding: EdgeInsets.zero,
@@ -67,71 +66,132 @@ class Index extends StatelessWidget {
               ],
             ),
           ),
-          body: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
+          body: TabBarView(
             children: [
-              SizedBox(
-                height: 1,
+              // Contents for the home tab
+              Container(
+                child: Home(),
               ),
-              Row(
-                children: [
-                  Container(
-                    margin: EdgeInsets.only(left: 20),
-                    child: Text("FEATURED"),
-                  ),
-                ],
-              ),
-              Row(
-                children: [
-                  Container(
-                    margin: EdgeInsets.only(left: 20),
-                    child: Text(
-                      "PRODUCTS",
-                      style:
-                          TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: 12,
-              ),
-              CarouselSlider(
-                items: [
-                  Container(
-                    width: 600,
-                    child: Image.asset("assets/images/sliderimage1.png"),
-                  ),
-                  Container(
-                    width: 400,
-                    child: Image.asset("assets/images/sliderimage2.png"),
-                  ),
-                  Container(
-                    width: 400,
-                    child: Image.asset("assets/images/sliderimage3.png"),
-                  ),
-                  Container(
-                    width: 400,
-                    child: Image.asset("assets/images/sliderimage4.png"),
-                  ),
-                ],
-                options: CarouselOptions(
-                  height: 200,
-                  aspectRatio: 16 / 9,
-                  viewportFraction: 0.8,
-                  initialPage: 0,
-                  enableInfiniteScroll: true,
-                  reverse: false,
-                  autoPlay: true,
-                  autoPlayInterval: Duration(seconds: 3),
-                  autoPlayAnimationDuration: Duration(milliseconds: 3000),
-                  autoPlayCurve: Curves.fastOutSlowIn,
-                  enlargeCenterPage: true,
-                  scrollDirection: Axis.horizontal,
-                ),
-              ),
+              // Contents for the messages tab
+              Center(child: Text('Messages Tab Content')),
+              // Contents for the search tab
+              Center(child: Text('Search Tab Content')),
+              // Contents for the favorites tab
+              Center(child: Text('Favorites Tab Content')),
+              // Contents for the profile tab
+              Center(child: Text('Profile Tab Content')),
             ],
           ),
+          bottomNavigationBar: Padding(
+            padding: EdgeInsets.only(top: 16.0), // Adjust the value as needed
+            child: Container(
+              decoration: BoxDecoration(
+                border: Border(
+                  top: BorderSide(width: 1.0, color: Colors.grey),
+                ),
+              ),
+              child: TabBar(
+                labelPadding: EdgeInsets.zero,
+                labelStyle: TextStyle(fontSize: 10),
+                tabs: [
+                  Tab(
+                    icon: Icon(Icons.home),
+                    text: 'Home',
+                  ),
+                  Tab(
+                    icon: Icon(Icons.message),
+                    text: 'Messages',
+                  ),
+                  Tab(
+                    icon: Icon(Icons.search),
+                    text: 'Search',
+                  ),
+                  Tab(
+                    icon: Icon(Icons.favorite),
+                    text: 'Favorites',
+                  ),
+                  Tab(
+                    icon: Icon(Icons.person),
+                    text: 'Profile',
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class Home extends StatelessWidget {
+  const Home({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return DefaultTabController(
+      length: 3, // Updated length to 5 for 5 tabs
+      child: Scaffold(
+        body: Column(
+          children: [
+            TabBar(
+              tabs: [
+                Tab(text: 'Feed'),
+                Tab(text: 'Categories'),
+                Tab(text: 'Watch Scanner'),
+              ],
+            ),
+            Expanded(
+              child: TabBarView(
+                children: [
+                  Center(child: Text('Feed Tab Content')),
+                  Container(
+                    child: Category(),
+                  ),
+                  Center(child: Text('Watch Scanner Tab Content')),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class Category extends StatefulWidget {
+  const Category({Key? key}) : super(key: key);
+
+  @override
+  State<Category> createState() => _CategoryState();
+}
+
+class _CategoryState extends State<Category> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Categories'),
+      ),
+      body: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Row(
+          children: List.generate(10, (index) {
+            return Container(
+              width: MediaQuery.of(context).size.width /
+                  2, // Set width for 2 containers
+              height: MediaQuery.of(context)
+                  .size
+                  .height, // Match the height of the screen
+              color: Colors.blueAccent,
+              child: Center(
+                child: Text(
+                  'Item $index',
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+            );
+          }),
         ),
       ),
     );
