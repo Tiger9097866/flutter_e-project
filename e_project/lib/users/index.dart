@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class Index extends StatelessWidget {
@@ -171,27 +170,132 @@ class _CategoryState extends State<Category> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Categories'),
+        title: Text('Top Models'),
       ),
       body: SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        child: Row(
-          children: List.generate(10, (index) {
-            return Container(
-              width: MediaQuery.of(context).size.width /
-                  2, // Set width for 2 containers
-              height: MediaQuery.of(context)
-                  .size
-                  .height, // Match the height of the screen
-              color: Colors.blueAccent,
-              child: Center(
-                child: Text(
-                  'Item $index',
-                  style: TextStyle(color: Colors.white),
-                ),
+        child: Column(
+          children: [
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: [
+                  SizedBox(
+                    width: 10,
+                    height: 10,
+                  ),
+                  Container(
+                    width: 130,
+                    height: 210,
+                    color: Color.fromARGB(255, 228, 226, 226),
+                    child: Center(child: Text("Container")),
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Container(
+                    width: 130,
+                    height: 210,
+                    color: Color.fromARGB(255, 228, 226, 226),
+                    child: Center(child: Text("Container")),
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Container(
+                    width: 130,
+                    height: 210,
+                    color: Color.fromARGB(255, 228, 226, 226),
+                    child: Center(child: Text("Container")),
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Container(
+                    width: 130,
+                    height: 210,
+                    color: Color.fromARGB(255, 228, 226, 226),
+                    child: Center(child: Text("Container")),
+                  ),
+                ],
               ),
-            );
-          }),
+            ),
+            Column(
+              children: [
+                Container(
+                  width: 100,
+                  height: 100,
+                  color: Colors.blue,
+                  child: Text("Container"),
+                ),
+                Container(
+                  width: 100,
+                  height: 100,
+                  color: Colors.orange,
+                  child: Text("Container"),
+                ),
+                Container(
+                  width: 100,
+                  height: 100,
+                  color: Colors.black,
+                  child: Text("Container"),
+                ),
+                Container(
+                  width: 100,
+                  height: 100,
+                  color: Colors.black,
+                  child: Text("Container"),
+                ),
+                Container(
+                  width: 100,
+                  height: 100,
+                  color: Colors.grey,
+                  child: Text("Container"),
+                ),
+                Container(
+                  width: 100,
+                  height: 100,
+                  color: Colors.green,
+                  child: Text("Container"),
+                ),
+                Container(
+                  width: 100,
+                  height: 100,
+                  color: Colors.brown,
+                  child: Text("Container"),
+                ),
+                Container(
+                  width: 100,
+                  height: 100,
+                  color: Colors.amber,
+                  child: Text("Container"),
+                ),
+                Container(
+                  width: 100,
+                  height: 100,
+                  color: Colors.pink,
+                  child: Text("Container"),
+                ),
+                Container(
+                  width: 100,
+                  height: 100,
+                  color: Colors.blue,
+                  child: Text("Container"),
+                ),
+                Container(
+                  width: 100,
+                  height: 100,
+                  color: Colors.black,
+                  child: Text("Container"),
+                ),
+                Container(
+                  width: 100,
+                  height: 100,
+                  color: Colors.red,
+                  child: Text("Container"),
+                ),
+              ],
+            ),
+          ],
         ),
       ),
     );
